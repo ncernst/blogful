@@ -1,28 +1,22 @@
-{% macro render_entry(entry) %}
+{% extends "base.html" %}
+
+{% block content %}
+
 {% if entry == None %}
-    <div class="col-md-10">
-        <h1>No entry with that ID</h1>
-    </div>
+        <h1>No entry found with that ID.</h1>
 {% else %}
 <div class="row">
     <div class="col-md-2 text-right metadata">
         <ul class="list-unstyled">
-            <li>
-                {{ entry.datetime | dateformat("%d/%m/%y") }}
-            </li>
+            <li> {{ entry.datetime | dateformat("%d/%m/%y") }}</li>
             <li><a href={{ url_for("edit_entry_get", id = entry.id) }}>Edit</a></li>
             <li><a href={{ url_for("delete_entry_get", id = entry.id) }}>Delete</a></li>
         </ul>
     </div>
     <div class="col-md-10">
-        <h1>
-            <a href= {{ url_for("go_to_entry", id = entry.id) }} >
-                {{ entry.title }}
-                
-            </a>
-        </h1>
+        <h1>{{ entry.title }}</h1>
         {{ entry.content | markdown }}
     </div>
 </div>
 {% endif %}
-{% endmacro %}
+{% endblock %}

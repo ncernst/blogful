@@ -2,9 +2,20 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Entries/Page <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+        <li><a href="#">5</a></li>
+        <li><a href="#">10</a></li>
+        <li><a href="#">20</a></li>
+        <li><a href="#">50</a></li>
+    </ul>
+</div>
+
 {% for entry in entries %}
 {{ macros.render_entry(entry) }}
 {% endfor %}
+
 
 <ul class="pager">
     {% if has_next %}
