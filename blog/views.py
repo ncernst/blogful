@@ -99,4 +99,10 @@ def delete_entry(id):
     session.commit()
     
     return redirect(url_for('entries'))
+
+
+@app.route("/login", methods=["GET"])
+def login_get():
+    return render_template("login.html")
+
     
