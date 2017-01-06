@@ -77,7 +77,7 @@ def edit_entry_get(id):
     
     entry = session.query(Entry).filter(Entry.id == id).first()
     
-    if current_user.get_id == entry.author.id:
+    if current_user.id == entry.author.id:
         return render_template("edit_entry.html", entry = entry)
     
     else:
@@ -89,7 +89,7 @@ def edit_entry_get(id):
 def edit_entry_post(id):
     
     entry = session.query(Entry).filter(Entry.id == id).first()
-    if current_user.get_id == entry.author.id:
+    if current_user.id == entry.author.id:
         entry.title = request.form["title"]
         entry.content=request.form["content"]
         session.commit()
